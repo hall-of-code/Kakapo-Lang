@@ -7,5 +7,5 @@ This Language is a Hobby Project by myself.
 The Syntax of Kakapo is a bit Javascript-like and inspired. It completly compiles to fast Golang, wich makes Kakapo verry Performant. 
 
 ```
-haha
+<html> lul</html>
 ```
