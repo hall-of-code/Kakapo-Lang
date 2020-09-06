@@ -1,0 +1,1 @@
+("Das ist ein String " + 554 + " Das ist noch ein String" + ("moin" + 44))
