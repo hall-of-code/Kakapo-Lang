@@ -20,24 +20,29 @@ in Kakapo;
 //Data Types:
 in Kakapo there are 3 different Base-Types:
 String: String
-Int: Non comma Number
-Float: Comma Number
+Num: Number/Int or Float
+Boolean: True/Flase
+Null: Null/Nil/undefined/nothing
 ;
 
 
 //Defining Variables;
 var $test = "Hello, World!"; // this variable is privat and only in that case avaible, where its defined;
-$test = "Hello, World!"; // this ist a global variable, wich is avaible from everywhere;
+$test = "Hello, World!"; // this variable is privat and only in that case avaible, where its defined;
+global $test = "Hello, World!"; // this ist a global variable, wich is avaible from everywhere;
 private $test = "Only here"; // this variable is privat and only in that case avaible, where its defined;
 once $test = "Nice"; // this variable can't be Updated or Modifyed after once defined;
 
 $string = "Hello World!";
 $string = "Hello "+"World";
-$int = 16 + 5;
+$num = 16 + 5;
 $num = 14.5 + .5;
 $array = ["Arg1", 55.5, "test"+"lol", 33];
 $object = {"Lol": "test"};
 $construct = construct({"data" => type.int, "alter" => type.int, "name" => type.str});
+
+//defining operations;
+
 
 //functions;
 func myFunction($arg)
