@@ -42,7 +42,11 @@ $object = {"Lol": "test"};
 $construct = construct({"data" => type.int, "alter" => type.int, "name" => type.str});
 
 //defining operations;
-
++=     //add VAL2 to VAL1;
+-=     //substract VAL2 form VAL1;
+.=     //synchronize Floating Value from VAL2;
+/=     //VAL1 / VAL2;
+*=     //VAL1 * VAL2;
 
 //functions;
 func myFunction($arg)
@@ -50,4 +54,18 @@ func myFunction($arg)
    $arg = $arg.split(":")[0];
    return ($arg);
 };
+
+function my_Cool_Box($x, $y)
+{
+   $this.x = $x;
+   $this.y = $y;
+   $this.constructor = { //the $this.constructor represents a Small function-based Function-constrcutor;
+     if([$this.x, $this.y] != type.int) return;
+   };
+   $string = "Width: "+$this.x+" and Hiehgt is "+$this.y;
+   return ($string);
+};
+
+//unnamed functions;
+
 ```
