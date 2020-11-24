@@ -38,4 +38,11 @@ $num = 14.5 + .5;
 $array = ["Arg1", 55.5, "test"+"lol", 33];
 $object = {"Lol": "test"};
 $construct = construct({"data" => type.int, "alter" => type.int, "name" => type.str});
+
+//functions;
+func myFunction($arg)
+{
+   $arg = $arg.split(":")[0];
+   return ($arg);
+};
 ```
