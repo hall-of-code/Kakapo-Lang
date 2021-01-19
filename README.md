@@ -108,11 +108,11 @@ When you now want to access one of this `Items` you've to do: `$variable[2]` to 
 Next we want to store the Ages with the People Names. For that we have to set unique `<Keys>` wich is bindet to the Value.
 ```php
     [
-        "Piet" : 25,
-        "Gundula": 71,
-        "Bob" : 28,
-        "Berbel" : 65,
-        "Xatar" : 43,
+        Piet : 25,
+        Gundula: 71,
+        Bob : 28,
+        Berbel : 65,
+        Xatar : 43,
     ]
 ```
 When we now want to access one of the Values in the Array, we could do it like this: `$variable['Berbel']` (= 65).
@@ -164,7 +164,7 @@ While an `Array` has optional Static Types -> a `Map` is based on Static Types.
 A Maps basic definition is like that `[ <storage> ]<content>`.
 So when you want a small list, it's enought to define it so:
 ```php
-$myCoolMap = []string map;
+$myCoolMap = []string :map;
 //and then store something in it:
 $myCoolMap << "Hallo"; //same as [ 1 : "Hallo", ];
 $myCoolMap << "Test";
@@ -173,8 +173,85 @@ $myCoolMap << "Lalalala";
 ```
 And now one difficult example:
 ```php
-
+$myProfMap = [string][string][int] :map;
+// Thats generates something like that:
+    [
+        <KEY string> : [<key string> : <int> ]
+    ]
+    
+//or in filled form:
+    [
+        example: [
+            a: 7,
+            b: 24,
+            c: 15,
+        ],
+    ]
 ```
+
+So now we have all basic Types explained :)
+
+## Variables
+A Variable is a small storage to store some data in it, especially give data a name.
+In Knife there are a few stack of different Variable Types:  
+[ **Normal** | Avaible where its defined and lower level. ]
+```php
+$x = "Hello"; //variable $x has now the value "Hello".
+
+//recommendet, static typed.
+$x :string = "Hello";
+
+//automatic detect datatype
+$x := "Hello"; //string
+```
+A defined variable can get changed, but not the Type! So a `string` cant switched to `num` or `array`. To do that, you could
+use `?`, example: `$x :string = "Hey;     $x ?= 25;` OR simply define your own dynamic Type, described later...
+[ **Global** | Avaible everywhere (in its own module). ]
+```php
+global $g = "Heyy"; //variable $g has now the value "Heyy".
+
+//recommendet
+global $g :string = "Heyy"; //string
+```
+
+[ **Private** | Avaible where its defined and lower level. (like default) ]
+```php
+private $p = "Hi"; //variable $p has now the value "Hi".
+
+//recommendet
+global $p :string = "Hi"; //string
+```
+
+[ **Once** | Only onetime defineable - and never changeable  ]
+```php
+once $o = "Allo"; //variable $o is now "Allo", and cant updated any more.
+global once $go = "Höllö"; //global once
+//recommendet
+once $o :string = "Allo"; //string
+```
+(Equivalent to `const in JS`)
+**Now the Special Variable Types:**
+Some Variable Types are really rare used, so they are only for special cases.
+[ **freeze** | Freeze a Variable at it's current point ]
+```php
+$f = "hi";
+$f = "bye";
+freeze $f; 
+$f = "waaaa"; //$f is now "bye" because its not possible to update it, after freeze
+```
+You also can unfreeze a freezed variable, this you could do with `thaw`. `thaw $f = "nice!";  //$f is now "nice!"`.
+
+[ **universe** | Universe make a Variable accessable from everywhere in the current runtime ]
+```php
+universe $u = "Im am here!";
+
+//you now can call it from every includet file or module. But it could overwritten easily.
+```
+
+`unset` a Variable is also possible, just use `unset $variable;` to undefine it.
+
+## Functions
+
 
 
 
