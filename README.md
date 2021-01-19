@@ -251,6 +251,78 @@ universe $u = "Im am here!";
 `unset` a Variable is also possible, just use `unset $variable;` to undefine it.  
 
 ## Functions
+In Knife there are two types of functions, `public` and `private`. Every Function is private by default. So you have to explecit set it to public, to make it callable from, everywhere.
+```php
+//normal private function.
+func myCoolFunction() {
+    print("Hello, World!");
+}
+
+//normal public function
+pub func myCoolFunction() {
+    print("Hello, World!");
+}
+
+
+//with return:
+func myCoolFunction() {
+    print("Hello, World!");
+    return "Hello";
+}
+
+//best practice:
+func myCoolFunction() :string {
+    print("Hello, World!");
+    return "Hello";
+}
+
+
+
+//arguments/params
+func myCoolFunction($one, $two, $three) {
+    print($one + $two + $three);
+}
+
+//best practice
+func myCoolFunction($one :string, $two :num, $three :array) {
+    print($one + _str($two) + _str($three));
+}
+
+//default values
+func myCoolFunction($one :string "default", $two :num 1, $three :array [55, 3 , 73]) {
+     print($one + _str($two) + _str($three));
+}
+```
+
+### _unnamed Functions
+You can use unnamed functions as callback or directly when something is happening.
+```php
+print(
+    f() {
+        $x = "Hello!";
+        return $x;
+    }
+);
+
+//prints out "Hello!";
+```
+
+### _callback example
+Imagine you want to run a function, and return another function call with result data from first function.
+```php
+func test($full_name :string, $callback :recall ) {
+    $splitted :array = split(" ", $name);
+    $F_name = $splitted[0];
+    $L_name = $splitted[1];
+    return $callback($F_name, $L_name);
+}
+
+//example:
+test("Jackie Chan", f( $First :string, $Last :string ) {
+    $res := "The First Name is: {$First}, and the Last Name is: {$Last}";
+    print($res); //prints out "The First Name is: Jackie, and the Last Name is: Chan"
+});
+```
 
 
 
