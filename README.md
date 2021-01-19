@@ -81,6 +81,10 @@ So you'll see, that there is no "null" or "undefined". Only there is an "extra P
 //lets imagine we have an expression wich is assigned to a variable:
 $expr = 25 > 26; //because 25 is not greater than 26, this expression is false. So $expr is `false` even it's defined.
 
+/*
+Whats the solution? -> Yes! The "unset Param".
+*/
+output( _stateExt($expr) ); // returns True. because it's defined.
 ```
 
 
