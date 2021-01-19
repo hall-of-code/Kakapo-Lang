@@ -229,9 +229,9 @@ global once $go = "Höllö"; //global once
 //recommendet
 once $o :string = "Allo"; //string
 ```
-(Equivalent to `const in JS`)
-**Now the Special Variable Types:**
-Some Variable Types are really rare used, so they are only for special cases.  
+(Equivalent to `const in JS`)  
+**Now the Special Variable Types:**  
+Some Variable Types are really rare used, so they are only for special cases.    
 [ **freeze** | Freeze a Variable at it's current point ]  
 ```php
 $f = "hi";
