@@ -57,8 +57,9 @@ Strings in Knife can written in `''` or `""` - Even when last one is recommendet
 Hello
 World
 !
-" //thats a multiline string, wich replaces newline in \n. You only can write multiline strings in " not in '.
+" //thats a multiline string, wich complete ignores newline. You only can write multiline strings in " not in '.
 ```
+When you'll need newline, you could use `_generateSynExpr(<multilineString>, LN_BREAK, "\n")`.
 Also its supportet to escape some Strings. Based on a 'Backslash' :
 ```php
 'Hello " ' //no escape needet.
@@ -86,9 +87,94 @@ Whats the solution? -> Yes! The "unset Param".
 */
 output( _stateExt($expr) ); // returns True. because it's defined.
 ```
+So you see: With the function `_stateExt(<object>)` you could get the status of an Objects "main definition space" - and not it's default Referenced Expression State.
+
+### _Arrays and Lists
+In Knife there is no explecit difference between an List and an Dict/map/hash/object - you could use every array as an Dict also as an simple List.
+**[Understand why]:**
+Imagine you have a list of the Age of some anonymous People:
+`[25, 71, 28, 65, 43]`
+Internal this Array is describeable like that: 
+```php
+    [
+        1 : 25,
+        2 : 71,
+        3 : 28,
+        4 : 65,
+        5 : 43,
+    ]
+```
+When you now want to access one of this `Items` you've to do: `$variable[2]` to access the second Key in the Array.
+Next we want to store the Ages with the People Names. For that we have to set unique `<Keys>` wich is bindet to the Value.
+```php
+    [
+        "Piet" : 25,
+        "Gundula": 71,
+        "Bob" : 28,
+        "Berbel" : 65,
+        "Xatar" : 43,
+    ]
+```
+When we now want to access one of the Values in the Array, we could do it like this: `$variable['Berbel']` (= 65).
+Also you could mix it, in that case you have to know: `num` based keys are automated in the correct direction - that means as follows: 
+```php
+    !! INCORRECT !!
+    [
+        Piet : 25,
+        Gundula : 71,
+        1 : 28,
+        Berbel : 65,
+        2 : 43,
+    ]
+    
+    The right way: (!)
+    [
+        Piet : 25,
+        Gundula : 71,
+        3 : 28,
+        Berbel : 65,
+        5 : 43,
+    ]
+```
+Also Arrays supporting nesting (of course :D).
+This was a little example:
+```php
+    [
+        abc : (4 + 25),
+        efg : "Hello",
+        hij : [1, 2, 44, 82],
+        lel : [
+            x1: "hello",
+            x2: "world",
+            x3: "!",
+        ],
+    ]
+```
+
+Also Knife has an JSON inline support, but its recommendet to format it into Native-array because the JSON parser's performance isnt nice :) Read more later...
 
 
+### _Maps
+`Maps` are the "Professional Version of Arrays" -> when you understand what I mean :)
+While an `Array` has optional Static Types -> a `Map` is based on Static Types.
+| Array | Map                                                        |
+| :----  | ----:                                                     |
+| `"hello", "world", "!" ]`| `string[ "hello", "world", "!" ]`       |
 
+A Maps basic definition is like that `[ <storage> ]<content>`.
+So when you want a small list, it's enought to define it so:
+```php
+$myCoolMap = []string map;
+//and then store something in it:
+$myCoolMap << "Hallo"; //same as [ 1 : "Hallo", ];
+$myCoolMap << "Test";
+$myCoolMap << "Lalalala";
+// same as [1: "Hallo", 2: "Test", 3: "Lalalala"]
+```
+And now one difficult example:
+```php
+
+```
 
 
 
