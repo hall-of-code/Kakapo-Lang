@@ -287,8 +287,20 @@ $top = $some || "default Value"; //now when $some is not defined, $top gets the 
 //also you can use 'OR' instead of '||'. Further you could use so many || easypes es you want.
 $top = $some || $another || $yetanother || "default value";
 
-//The Referencing System.
-Basicly a 
+/*The Referencing System.
+Basicly a Variable is storing the current state of its definion:
+Lets take a look:
+*/
+$x = 25;
+$y = $x;
+$x = 62;
+print($y); //This Prints out "25" because: at the time where $y was defined, $x has the Value 25.
+
+/* Now we could also use References, thats only new Names for something.*/
+$x = 25;
+$y &= $x;                                 // or $y = &$x; 
+$x = 62;
+print($y); //now it prints out "62", because: $y references the $x Variable.
 ```
       
       
