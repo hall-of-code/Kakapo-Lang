@@ -206,7 +206,7 @@ global $g :string = "hello world!"; //manual set Type, type: string
 ```
  ### _Extra Parameters
  There are also some extra Parameters wich could be assigned to a Variable. So when you would like to set a Variable once, and make it non-changeable - you could do this with `'once'`.
- ```
+ ```php
  once $hello :string = "Hello"; //$hello has now the string Value "Hello"
       $hello = "Bye";           //this DOESNT WORK because you never can update an "once"-Variable any more.
       
@@ -238,13 +238,27 @@ global $g :string = "hello world!"; //manual set Type, type: string
     print($pro);                            //Prints out "Hello World!"
     
  File module.kf :
+    load::universe;
+    print($pro); //Prints out "Hello World!"
+    
+ ```
+ 
+--------
+ **The `universe` Param:** That Param is a bit like the `global` Param, but it makes a Variable avaible over every Includet Module. 
+ _Example_: 
+ ```php
+ File main.kf :
+    import myModule as $module;
+    universe $pro :string = "Hello World";  //Define Variable
+    print($pro);                            //Prints out "Hello World!"
+    
+ File module.kf :
     use::universe;
     print($pro); //Prints out "Hello World!"
     
  ```
  
 --------
- 
       
       
       
