@@ -344,6 +344,19 @@ $z = sub(19, 10); //$z is now 9.
 #### _Areas
 An Area begins with `begin:` and ends up with `:end` **OR** `{` and `}`. We are using it in different ways.
 For example in Loops ect.
+---
+## Loops
+Loops are relativ the same as other Languages.
+#### _For Loops
+Basic Construction of a For Loop is this one.
+`for( <define>, <run>, <target> ) ...`
+So the Loop runs so long, as the Target is not reached, or sb call `break`.
+```php
+for( $f = 25, $f -= 1, $f == 0 ) {
+    print("Lol"); 
+}
+```
+This Loop, defines `$f = 25` once. Then It calls the `Loops Body` and the Loops `instruct` (`$f -= 1`) so long as the Expression `f == 0` is `false`. 
       
       
       
