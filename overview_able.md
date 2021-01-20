@@ -229,7 +229,7 @@ global $g :string = "hello world!"; //manual set Type, type: string
  ```
  
 --------
- **The `universe` Param:** That Param is a bit like the `global` Param, but it makes a Variable avaible over every Includet Module. 
+ **The `universe` Param:** That Param is a bit like the `global` Param, but it makes a Variable avaible over every Includet Module.   
  _Example_: 
  ```php
  File main.kf :
@@ -244,7 +244,7 @@ global $g :string = "hello world!"; //manual set Type, type: string
  ```
  
 --------
- **The `universe` Param:** That Param is a bit like the `global` Param, but it makes a Variable avaible over every Includet Module. 
+ **The `universe` Param:** That Param is a bit like the `global` Param, but it makes a Variable avaible over every Includet Module.   
  _Example_: 
  ```php
  File main.kf :
