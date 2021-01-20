@@ -357,7 +357,57 @@ for( $f = 25, $f -= 1, $f == 0 ) {
 }
 ```
 This Loop, defines `$f = 25` once. Then It calls the `Loops Body` and the Loops `instruct` (`$f -= 1`) so long as the Expression `f == 0` is `false`. 
-      
+
+#### _Fixed Loops
+Fixed Loops has a fixed number of Loop-rythms the have to make.
+`loop(<count>, <optional expression>) ...`
+```php
+loop(10) {
+    print("hello");
+}
+```
+This example prints out "hello" ten times.  
+Another Example:
+```php
+$number := 25;
+$counter := 0;
+loop($number, $counter += 1) {
+    print($counter);
+}
+```
+This Example prints out 1 then 2 then 3, then 4 ... 25 and stops execuing.  
+Manipulating Fixed Loops? Yes thats also possible, the `<count>` is everytime overwriteable:
+```php
+private $data :array = [1, 2, 2, 2, 1, 2, 1];
+private $c :num = $data.len;
+loop ( $c ) {
+    if( $data[0] == 1 ) {
+        unset $data[0]; //remove current item from array ($data)
+    }
+    else
+    {
+        $data[0] -= 1;
+        $c += 1;
+    }
+}
+```
+So that Loops runs 11 times. Because it runs so long as every Instance of $data is removed.
+
+#### _While Loops
+While Loops runs so long as it's Expression is `true`. `while ( <expression> ) ... `
+```php
+$a :num = 50;
+while ( $a >= 1 ) {
+    $a -= 1;
+}
+```
+That Loops runs 50 Times, because then $a is 0 , and the Expression is `false`.
+
+#### _Each Loops
+Each Loops are implemented to Loop thought an Array/Map with nested Elements. `each (<array | map> as <reference> ) ...`
+```php
+
+```
       
       
 
