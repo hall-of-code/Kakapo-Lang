@@ -406,6 +406,16 @@ That Loops runs 50 Times, because then $a is 0 , and the Expression is `false`.
 #### _Each Loops
 Each Loops are implemented to Loop thought an Array/Map with nested Elements. `each (<array | map> as <reference> ) ...`
 ```php
+$store :array = [
+                    alfred: [first: "alfred", last: "gringer", age: 45],
+                    gundel: [first: "gundel", last: "crisps", age: 59],
+                    flash: [first: "flash", last: "grifindor", age: 17],
+                ];
+
+each ( $store as $item )
+{
+    print( _str($item.age) + $item.first);
+}
 
 ```
       
