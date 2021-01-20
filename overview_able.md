@@ -212,6 +212,39 @@ global $g :string = "hello world!"; //manual set Type, type: string
       
  global once $example :num = 55; //you also could define multiple Paramters. So a Variable could be global - and once.
  ```
+
+ There are a few more extra Params, wich can be assigned to a Variable:
+ 
+ **The `freeze` Param:** That Param is simmilar to the `once` Param, but could be removed dynmaicly with `thaw`.  
+ _Example_: 
+ ```php
+ $hello :string = "hello"; //define $hello
+ $hello = "bye"; //update $hello
+ freeze $hello; //freeze $hello at current state
+ $hello = "lol"; //try to update it but it's not updating. So $hello is "bye" until you thaw it.
+ 
+ //now we want to thaw it.
+ thaw $hello;
+ $hello = "nice";  //now we could update it again. $hello is now "nice".
+ ```
+ 
+--------
+ **The `universe` Param:** That Param is a bit like the `global` Param, but it makes a Variable avaible over every Includet Module. 
+ _Example_: 
+ ```php
+ File main.kf :
+    import myModule as $module;
+    universe $pro :string = "Hello World";  //Define Variable
+    print($pro);                            //Prints out "Hello World!"
+    
+ File module.kf :
+    use::universe;
+    print($pro); //Prints out "Hello World!"
+    
+ ```
+ 
+--------
+ 
       
       
       
