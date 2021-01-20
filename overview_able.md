@@ -184,11 +184,35 @@ $myProfMap = [string][]num :map;
 So now we have all basic Types explained :)  
 
 ## Variables
-You could define two types of Variables: `Private` and `Global`, by default a Variable is `Private`.
+You could define two types of Variables: `Private` and `Global`, by default a Variable is `Private`. We recommended to define a Variables name with an `$`. But you also could name your Variable `test` instead of `$test`. 
 #### _Private Variables
 Private Variables are only avaible at the Level where its defined, and Lower. A private Variable can everytime changed to Global and back.
 ```php
-$some = "hello"; //undefined Type, type: multi
-$some2 := "hello"; //auto set type. Like
+$some   = "hello"; //unspecified Type, type: multi
+$some2 := "hello"; //auto set type. type: string
+$some3 :string = "hello"; //manual defined type. type: string
 ```
+Also you could write `'private'` before the definition. Like that:
+```php
+private $some :string = "hello";
+```
+
+### _Global Variables
+A Global Variable is avaible in the whole document from everywhere. A Global Variable could be overwritten with a Private Variable. Also you could move a `Global` to a `Private` Variable. Global Variables where defined with the `'global'` Keyword.
+```php
+global $g  = "hello world!"; //unspecified Type, type: multi
+global $g := "hello world!"; //auto set Type, type: string
+global $g :string = "hello world!"; //manual set Type, type: string
+```
+ ### _Extra Parameters
+ There are also some extra Parameters wich could be assigned to a Variable. So when you would like to set a Variable once, and make it non-changeable - you could do this with `'once'`.
+ ```
+ once $hello :string = "Hello"; //$hello has now the string Value "Hello"
+      $hello = "Bye";           //this DOESNT WORK because you never can update an "once"-Variable any more.
+      
+ global once $example :num = 55; //you also could define multiple Paramters. So a Variable could be global - and once.
+ ```
+      
+      
+      
 
