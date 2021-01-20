@@ -302,6 +302,48 @@ $y &= $x;                                 // or $y = &$x;
 $x = 62;
 print($y); //now it prints out "62", because: $y references the $x Variable.
 ```
+-----------
+
+## Functions and Areas
+In Knife Code-Blocks are defined as `<Area>` -> That means a Block **isn't** defined by `Indention Level` (like Python) - and also it **is optional** definded by `{}` like in JS, PHP or Golang. In Knife - we're using `<begin>` and `<end>` Keywords.
+For don't scare off PHP and JS Developers to learn *Knife* - we've implemented `{}` as well. (Our Interpreter/Optimizer replaces `{` with "start:", and also `}` with ":end").
+Because you can't define a Function in a Function (only unnamed and callback is allowed) -- you dont need to closeup every single Functions Tag when you're define the next Function.  
+
+Functions are declared by `func` keyword - followed by Name, arguments and returntype. `func <name> (<params>) type: FUNCTION`.  
+```php
+func some($x :num, $y :num) num:
+    return $x + $y;
+:end
+
+!! OR !!
+
+func some($x :num, $y :num) :num {
+    return $x + $y;
+}
+
+//Best Practice of multi define functions
+func some($x :num, $y :num) num:
+    return $x + $y;
+    
+func sub($x :num, $y :num) num:
+    return $x - $y;
+    
+func mult($x :num, $y :num) num:
+    return $x * $y;
+    
+:end
+//now we have defined 3 Functions.
+```
+To call that function, you use: `<functionname>()`.
+```php
+$z = sub(19, 10); //$z is now 9.
+```
+**Functions** are private by default, to make it Avaible from other Files/Modules/Includes - we are using the `public` or shorter `pub` keyword. `pub func some() :string {...}`.
+
+---
+#### _Areas
+An Area begins with `begin:` and ends up with `:end` **OR** `{` and `}`. We are using it in different ways.
+For example in Loops ect.
       
       
       
