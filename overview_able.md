@@ -244,21 +244,52 @@ global $g :string = "hello world!"; //manual set Type, type: string
  ```
  
 --------
- **The `universe` Param:** That Param is a bit like the `global` Param, but it makes a Variable avaible over every Includet Module.   
+ **The `unset` Param:** That Param undefines a Variable. So after that, the Variable is removed. But could defined after that again new whenever you would like to do that.     
  _Example_: 
  ```php
- File main.kf :
-    import myModule as $module;
-    universe $pro :string = "Hello World";  //Define Variable
-    print($pro);                            //Prints out "Hello World!"
-    
- File module.kf :
-    use::universe;
-    print($pro); //Prints out "Hello World!"
-    
- ```
+$hello := "Hello";
+print($hello); //Prints out "Hello".
+
+unset $hello;
+print($hello); //Triggers an Error because the Variable '$hello' is not existing anymore.
+```
  
 --------
+--------
+So you'll see -> A Variable is really Dynamicly. So, except `once`, every Variable is updateable and Changeable.
+Here a few Examples for more understanding:
+```php
+private $cool;
+$yes = "yeess";
+
+$cool :string, $more_cool :string = "Cool", "Cooler"; //define quick multiple Variables.
+private $some :string, global $other :num, once $x :num = "hello", 5, 91.2;
+
+/*
+When you want to define multiple statements automaicly you could use the ':=' only for last one.
+*/
+$one, $two := "Yes"; //$one is defined as type: multi    | and $two is autodefined to type: string | Both has Value "Yes";
+$one :auto, $two := "Yes";  //$one  is auto-defined as type: string | $two is also auto-defined to type: string | Both has value "Yes";
+
+/*
+When you want to define an Array with its items to multiple Variables, you could do that also like so:
+*/
+$first, $second, $third = ["item1", "item2", "item3"]; //thats maps $first to "item1", and $third to "item3" ... and so on.
+$first, $second, $third = ["item1", "item2", "item3", "item4"]; //"item4" is never assigned in this example.
+
+//but what - when you would like to assign the whole array to every of the Variables?
+$first, $second, $third = (["item1", "item2", "item3"]) as ?instance; //now $first, $second and $third has the whole array each.
+
+
+//The Or-expression:
+private $some; //$some exists but not assigned.
+$top = $some || "default Value"; //now when $some is not defined, $top gets the Value "Default Value";
+//also you can use 'OR' instead of '||'. Further you could use so many || easypes es you want.
+$top = $some || $another || $yetanother || "default value";
+
+//The Referencing System.
+Basicly a 
+```
       
       
       
