@@ -1,5 +1,5 @@
 # Knife Concepts
-This is an better Version of Knife - an overviewable Concept Description of an easy readable `not Indention-level` and `not bracket-based`.
+This is an better Version of Knife - an overviewable Concept Description of an easy readable `not Indention-level` and `not only bracket-based`.
 
 ## Comments
 Comments are complete Ignored by the Compiler/Interpreter.
