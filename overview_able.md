@@ -420,16 +420,91 @@ That Loops runs 50 Times, because then $a is 0 , and the Expression is `false`.
 Each Loops are implemented to Loop thought an Array/Map with nested Elements. `each (<array | map> as <reference> ) ...`
 ```php
 $store :array = [
-                    alfred: [first: "alfred", last: "gringer", age: 45],
-                    gundel: [first: "gundel", last: "crisps", age: 59],
-                    flash: [first: "flash", last: "grifindor", age: 17],
+                    alfred: [name: "alfred", last: "gringer", age: 45],
+                    gundel: [name: "gundel", last: "crisps", age: 59],
+                    flash: [name: "flash", last: "grifindor", age: 17],
                 ];
 
 each ( $store as $item )
 {
-    print( _str($item.age) + $item.first);
+    print( _str($item.age) + $item.name);
 }
 
+//Example with Key and Value Printing:
+each ($store, $key as $item) {
+    print($key + $item.name); //prints out "alfred alfred".
+}
+```
+---
+
+## Logical Operations/Gates
+In Knife you could use Logical Gates in few ways - that ways are simmilar to other languages and easy to undestand.
+
+#### _If and Else
+The default way to use a Logical Gate is the `if` - Gate. The Gate runs when the given Value/Expression is `true`.
+```php
+
+$x := 25;
+if ($x >= 10) {
+   print("This is running when $x is greater or simmilar to 10."); 
+}
+
+```
+There are also the `else` Gate, wich is triggered when the If-Gate is `false`. 
+```php
+
+$x := 1;
+if ($x >= 10) {
+   print("This is running when $x is greater or simmilar to 10."); 
+} else {
+    print("This is running when the If-expression failes.");
+}
+
+```
+You also could use `else if` or shorter `elif` to build a multi-expression Logical Operation.
+```php
+
+$x := 5;
+if ($x >= 10) {
+   print("This is running when $x is greater or simmilar to 10."); 
+} else if ($x > 3) {
+     print("This is running when $x is greater then 3."); 
+} else {
+    print("This is running when the other If-expressions failes.");
+}
+
+```
+
+#### _Matchgates
+Matchgates are used to running If-Gates faster-way.
+```php
+
+$x := 12;
+match ($x) {
+    ( >= 10 ) { ... };
+    ( > 3) { ... };
+    (else) { ... };
+}
+
+// !! OR !!
+
+match($x) {
+    ( >= 10 ) { ... };
+    ( > 3) { ... };
+} else {
+    ...
+}
+
+```
+
+#### _Fastlogics
+When you write less - then you also could use Fastgates. This Gates can written inline - but are not so powerfull.
+```php
+set $z;
+$y := $z || "some"; //when $z isnt defined, $y uses "some" as value.
+
+// you could uses so often as you want
+$a := some() || other() || another() || "default";
 ```
       
       
