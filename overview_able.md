@@ -23,7 +23,6 @@ In **Knife** there few different Datatypes, wich are described as follow:
 | `num`    | Number, it combines _integer_ and _float_ in one. |  ``55``, `4.30`, `.25`                         |
 | `string` | String, a sequence of given Characters.           |  `"Hello"`, `"Test Test Jes"`,  `'Hello'`      | 
 | `bool`   | State, either `True` or `False`.                  |  `True`, `False`                               |
-| `unset`  | Expremiental for non-defined Values.              |  `unset`                                       |
 | `array`  | A group/list of multiple Values / Key:Values.     |  `[1,2,3]`, `["hello", 55.5, "sealion lel"]`   |
 | `map`    | A group/list of same Datatypes Values.            |  `["hello", "lol", "77xd"]string`              |
 
@@ -72,17 +71,7 @@ output( _state($x) ); //the native function _state() returns the current state o
 $x = "Hello"; //lets define $x as the String "Hello".
 output( _state($x) ); //now the functions returns us True because $x is *not* undefined.
 ```
-So you'll see, that there is no "null" or "undefined". Only there is an "extra Param" wich is assigned to an `Object` when it's not defined. This "extra Param" called `unset` -> But where we need this case?
-```php
-//lets imagine we have an expression wich is assigned to a variable:
-$expr = 25 > 26; //because 25 is not greater than 26, this expression is false. So $expr is `false` even it's defined.
-
-/*
-Whats the solution? -> Yes! The "unset Param".
-*/
-output( _stateExt($expr) ); // returns True. because it's defined.
-```
-So you see: With the function `_stateExt(<object>)` you could get the status of an Objects "main definition space" - and not it's default Referenced Expression State.
+So you'll see, that there is no "null" or "undefined". Every undefined Object is `False`.
 
 ### _Arrays and Lists
 In Knife there is no explecit difference between an List and an Dict/map/hash/object - you could use every array as an Dict also as an simple List.
@@ -156,7 +145,7 @@ While an `Array` has optional Static Types -> a `Map` is based on Static Types.
 | :----  | ----:                                                     |  
 | `"hello", "world", "!" ]`| `[ "hello", "world", "!" ]string`       |  
 
-A Maps basic definition is like that `[ <storage> ]<content>`.  
+A Maps basic definition is like that `[ <definition> ]<type>`.  
 So when you want a small list, it's enought to define it so:  
 ```php
 $myCoolMap = []string :map;
@@ -168,7 +157,7 @@ $myCoolMap << "Lalalala";
 ```
 And now one difficult example:  
 ```php
-$myProfMap = [string][]num :map;
+$myProfMap :map = [ []num ]string;
 // Thats generates something like that:
     [
         <KEY string> : [<num>] :num
@@ -176,9 +165,32 @@ $myProfMap = [string][]num :map;
     
 //or in filled form:
     [
-        example: [ 1, 2, 3, ],
-        some: [ 55.5, 25.25, 18, ],
+        "example": [ 1, 2, 3, ],
+        "some": [ 55.5, 25.25, 18, ],
     ]
+    
+!! Another Example : !!
+$someMap :map = [ num ]string;
+
+//is filled:
+[
+    "test": 44,
+    "some": 5,
+]
+
+!! Another Example : !!
+$someMap :map = [ [ num ]string ]string;
+
+//is filled:
+[
+    "test": [
+        "lel": 100,
+    ],
+    "test2": [
+        "lel2": 200,
+    ],
+]
+
 ```
 
 So now we have all basic Types explained :)  
@@ -338,7 +350,8 @@ To call that function, you use: `<functionname>()`.
 ```php
 $z = sub(19, 10); //$z is now 9.
 ```
-**Functions** are private by default, to make it Avaible from other Files/Modules/Includes - we are using the `public` or shorter `pub` keyword. `pub func some() :string {...}`.
+**Functions** are private by default, to make it Avaible from other Files/Modules/Includes - we are using the `public` or shorter `pub` keyword.   
+`pub func some() :string {...}`.
 
 ---
 #### _Areas
