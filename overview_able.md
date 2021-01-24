@@ -506,6 +506,29 @@ $y := $z || "some"; //when $z isnt defined, $y uses "some" as value.
 // you could uses so often as you want
 $a := some() || other() || another() || "default";
 ```
+
+#### _Expressions
+To build a new Expression, you'll need a minimum of two Values - wich are compared to each other.
+```php
+
+$b := (1 == 2);       //Value of $b is FALSE - because 1 isn't the same as two.
+$c := ($b == false);  //Value of $c is TRUE - because $b is FALSE.
+
+```
+The Operators:
+| Operator | Description                                  | Example                  |
+| ----     | ----:                                         | ----:                   |
+| `==`,`EQ`| The same as/ equals to.                      | `$x == 25`               |
+|`!=`,`NOT`| Not the same as / dont equals to.            | `$y != 2`                |
+|`>=`,`GEQ`| Greater then or the same as.                 | `$x >= $y`               |
+|`<=`,`SEQ`| Smaller then or the same as.                 | `$x <= $y`               |
+| `>`, `GA`| Greater then.                                | `$x > $y`                |
+| `<`, `SA`| Smaller then.                                | `$x < $y`                |
+| `||`,`OR`| Or.                                          | `($x || $z) ==  $y`      |
+|`&&`,`AND`| And.                                         | `($x == 2) && ($y > 5)`  |
+
+Some Examples are:
+` ($x >= 1 || $x < 77) || ($y != 25)` same as `($x GEQ 1 OR $x SA 77) OR ($y NOT 25)`
       
       
 
