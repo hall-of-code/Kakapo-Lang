@@ -529,6 +529,32 @@ The Operators:
 
 Some Examples are:
 ` ($x >= 1 || $x < 77) || ($y != 25)` same as `($x GEQ 1 OR $x SA 77) OR ($y NOT 25)`
+
+
+#### _Classes
+In Knife you could also create classes. A simple example for that:
+```php
+class MyClass {
+    build constructor($x :num, $y :num) {
+        $this.x = $x;
+        $this.y = $y;
+    }
+    
+    public addition() :num {
+        return ($this.x + $this.y);
+    }
+    
+    public substraction() :num {
+        return ($this.x - $this.y);
+    }
+}
+
+//too call the class:
+$lel = new MyClass(25, 3);  //call the Constructor
+$lel.addition();            //28
+$lel.substraction();        //22
+```
+
       
       
 
