@@ -17,6 +17,29 @@ Das waren jetzt die Normalen Datentypen. Natürlich gibt es auch noch sogenannte
 | ---  | ---                                         | ---                                                          |
 |`arr` | Räpresentiert ein Array - also eine Liste.  | `[4, 26, 91, 8, 44]`, `["Hallo", "Welt"]`                    |
 |`vec` | Räpresentiert einen Vector - mehr-d-liste.  | `<'a': 1, 2, 3 | 'b': 3, 2, 1 | 'c': 2, 1, 3 >`              |
+|`map` | Räpresentiert eine Map -                 .  | `{ }`                                                        |
 
 #### _Arrays [arr]
 Ein Array (`arr`) ist eine Aufzählung mehrerer Elemente. Ein Array umfasst meistens Werte des selben Typen.
+```
+$mein_array :arr = ["Hallo", "Welt"];
+```
+
+#### _Eigene Typen
+```
+type :looooong [":i32 + :i32"];
+$zahl :num = 10.00;
+$lang :looooong = $zahl .parseNum(1, 100*100*100, 0);
+```
+
+### _Parameter
+```
+f myFunction ( $one :num, $two :str, $thr :arr ) ... //normale Parameter
+f myFunction ( $one :num = 10, $two :str = "Hallo", $thr :arr = [1, 2, 3] ) ... //default Werte
+f myFunction ( ?$one :num, ?$two :str, ?$thr :arr) ... //optional Parameters
+f myFunction ( $:num ) ... //unnamed Parameter
+f myFunction ( $:num .. $:num) ... //Undefined nuimber of Parameters
+f myFunction ( ? ) :auto {
+    return _self[0] ?? "Not Found"; //returns first Parameter or Error-string
+}
+```
